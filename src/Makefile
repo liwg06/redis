@@ -399,7 +399,7 @@ DEP = $(REDIS_SERVER_OBJ:%.o=%.d) $(REDIS_CLI_OBJ:%.o=%.d) $(REDIS_BENCHMARK_OBJ
 # building it should complete before building any other object. Instead of
 # depending on a single artifact, build all dependencies first.
 %.o: %.c .make-prerequisites
-	$(REDIS_CC) -MMD -o $@ -c $<
+	$(REDIS_CC) -H -MMD -o $@ -c $<
 
 # The file commands.c is checked in and doesn't normally need to be rebuilt. It
 # is built only if python is available and its prereqs are modified.
